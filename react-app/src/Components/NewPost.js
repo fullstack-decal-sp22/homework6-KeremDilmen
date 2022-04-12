@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 const NewPost = () => {
   const [id, setId] = useState();
@@ -6,11 +7,18 @@ const NewPost = () => {
   const [body, setBody] = useState();
 
   const onSubmit = () => {
-    console.log({
-      id,
-      title,
-      body
-    })
+    const data = {
+      "id" : id,
+      "title": title,
+      "body": body
+    };
+
+    console.log(data);
+
+    axios
+      .post('http://localhost:3002/post', data)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   }
 
   return <div>
