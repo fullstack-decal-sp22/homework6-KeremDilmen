@@ -7,18 +7,18 @@ const NewPost = () => {
   const [body, setBody] = useState();
 
   const onSubmit = () => {
-    const data = {
-      "id" : id,
-      "title": title,
-      "body": body
-    };
+    console.log({
+      id,
+      title,
+      body,
+      
+    });
 
-    console.log(data);
-
-    axios
-      .post('http://localhost:3002/post', data)
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+    axios.post('http://localhost:3002/post', {"id":id,"title":title,"body":body})
+    .then(response=>{
+      console.log(response.data);
+    })
+    .catch((error)=>console.log(error));
   }
 
   return <div>
